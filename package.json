@@ -1,0 +1,35 @@
+{
+  "name": "video-render",
+  "version": "1.0.0-beta",
+  "description": "",
+  "main": "./dist/videorender.js",
+  "scripts": {
+    "server": "node server/sts.js",
+    "dev": "NODE_ENV=development webpack --config ./script/webpack.dev.config.js",
+    "build": "NODE_ENV=production webpack",
+    "cos-auth.min.js": "uglifyjs ./demo/common/cos-auth.js -o ./demo/common/cos-auth.min.js -c -m"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fjqgx/video-render.git"
+  },
+  "keywords": [],
+  "author": "fjqgx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fjqgx/video-render/issues"
+  },
+  "homepage": "hhttps://github.com/fjqgx/video-render#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "webpack": "^3.12.0"
+  },
+  "dependencies": {
+    "yuv-buffer": "^1.0.0",
+    "yuv-canvas": "^1.2.6"
+  }
+}
