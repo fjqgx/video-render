@@ -1,5 +1,6 @@
 import YUVBuffer from 'yuv-buffer';
 import YUVCanvas from 'yuv-canvas';
+import RenderType from './rendertype';
 
 export class VideoRender {
   constructor () {
@@ -13,6 +14,8 @@ export class VideoRender {
 
     this._videoWidth = 0;
     this._videoHeight = 0;
+
+    this._renderType = RenderType.Center;
   }
 
   /**
@@ -153,6 +156,21 @@ export class VideoRender {
       return false;
     }
 
+    if (RenderType.Center === this._renderType) {
+      return this._centerResize();
+    } else if (RenderType.Tile === this._renderType) {
+      return this._tileResize();
+    }
+  }
+
+  _reset () {
+    if (this._render) {
+      this._render.clear();
+    }
+    this._render = null;
+  }
+
+  _centerResize () {
     let aspectRatio = this._videoWidth / this._videoHeight;
     this._aspectRatio = this._contianer.clientWidth / this._contianer.clientHeight;
 
@@ -177,10 +195,7 @@ export class VideoRender {
     return true;
   }
 
-  _reset () {
-    if (this._render) {
-      this._render.clear();
-    }
-    this._render = null;
+  _tileResize () {
+    return false
   }
 }
